@@ -7,9 +7,11 @@ const SavedCandidatesList = () => {
     
     useEffect(() => {
         const SavedCandidates = localStorage.getItem('SavedCandidates');
+        let candidates: Candidate[] = [];
         if (typeof SavedCandidates === 'string') {
-        setCandidates(JSON.parse(SavedCandidates));
+          candidates = JSON.parse(SavedCandidates);
         }
+        setCandidates(candidates);
     }, []);
     
     return (

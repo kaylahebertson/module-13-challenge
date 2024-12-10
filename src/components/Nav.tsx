@@ -5,12 +5,12 @@ const Nav = () => {
   return (
     <ul>
       <li>
-        <Link to="/" className={currentPage === '/' ? 'active' : ''}>
+        <Link to="/" className={currentPage === '/' ? 'nav-link active' : 'nav-link'}>
           Home
         </Link>
       </li>
       <li>
-        <Link to="/SavedCandidates" className={currentPage === '/SavedCandidates' ? 'active' : ''}>
+        <Link to="/SavedCandidates" className={currentPage === '/SavedCandidates' ? 'nav-link active' : 'nav-link'}>
           Saved Candidates
         </Link>
       </li>
