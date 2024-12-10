@@ -22,7 +22,6 @@ const SavedCandidatesList = () => {
               <th>Email</th>
               <th>Company</th>
               <th>Bio</th>
-              <th>Reject</th>
             </tr>
           </thead>
           <tbody>

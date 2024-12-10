@@ -19,15 +19,16 @@ const CandidateSearch = () => {
   });
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const searchSpecificUser = async (username: string) => {
-    const user: Candidate = await searchGithubUser(username);
-    setCurrentUser(user);
+  const searchSpecificUser = async (user: string) => {
+    const data: Candidate = await searchGithubUser(user);
+
+    setCurrentUser(data);
   };
 
   const searchForUsers = useCallback(async () => {
-    const users: Candidate[] = await searchGithub();
-    setResults(users);
-    await searchSpecificUser(users[currentIndex].login || '');
+    const data: Candidate[] = await searchGithub();
+    setResults(data);
+    await searchSpecificUser(data[currentIndex].login || '');
   }, [currentIndex]);
 
   const addCandidate = async (isSelected: boolean) => {
