@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
 import type { Candidate } from '../interfaces/Candidate.interface';
 import CandidateCard from '../components/CandidateCard.tsx';
+import { useCallback } from 'react';
 
 const CandidateSearch = () => {
   const [results, setResults] = useState<Candidate[]>([]);
@@ -23,11 +24,11 @@ const CandidateSearch = () => {
     setCurrentUser(user);
   };
 
-  const searchForUsers = async () => {
+  const searchForUsers = useCallback(async () => {
     const users: Candidate[] = await searchGithub();
     setResults(users);
     await searchSpecificUser(users[currentIndex].login || '');
-  };
+  }, [currentIndex]);
 
   const addCandidate = async (isSelected: boolean) => {
     if (isSelected) {
@@ -62,3 +63,5 @@ const CandidateSearch = () => {
 };
 
 export default CandidateSearch;
+
+
