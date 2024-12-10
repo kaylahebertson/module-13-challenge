@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
 import type { Candidate } from '../interfaces/Candidate.interface';
-import CandidateCard from '../components/CandidateCard';
+import CandidateCard from '../components/CandidateCard.tsx';
 
 const CandidateSearch = () => {
   const [results, setResults] = useState<Candidate[]>([]);
@@ -31,7 +31,7 @@ const CandidateSearch = () => {
 
   const addCandidate = async (isSelected: boolean) => {
     if (isSelected) {
-      let parsedCandidates = Candidate[] = [];
+      let parsedCandidates: Candidate[] = [];
       const SavedCandidates = localStorage.getItem('SavedCandidates');
       if (typeof SavedCandidates === 'string') {
         parsedCandidates = JSON.parse(SavedCandidates);
@@ -51,11 +51,11 @@ const CandidateSearch = () => {
   useEffect(() => {
     searchForUsers();
     searchSpecificUser(currentUser.login || '');
-  }, []);
+  }, [currentUser.login, searchForUsers]);
 
   return (
     <>
-      </><h1>CandidateSearch</h1>
+      <h1>CandidateSearch</h1>
       <CandidateCard currentUser={currentUser} addCandidate={addCandidate} />
     </>
   );
